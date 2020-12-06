@@ -1,0 +1,50 @@
+GET http://localhost:8080/participant
+
+###
+GET http://localhost:8080/participant/part
+
+###
+GET http://localhost:8080/points
+
+###
+GET http://localhost:8080/participant/11
+
+
+###
+
+POST http://localhost:8080/participant
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "AmpaipornAA",
+  "surname": "Jitmaingong",
+  "country": "Thailand",
+  "city": "Surin",
+  "age": 27,
+  "gender": "F",
+  "competence": "Creativity and Design",
+  "competence_name": "Floristics",
+  "url_image": "https://asiapoisk.com/uploads/cache/people/jW6zwc-465x600.jpg"
+}
+
+
+###
+// это будет по другому
+http://localhost:8080/participant/11/remove
+
+###
+DELETE http://localhost:8080/participant/12
+
+###
+GET http://localhost:8080/participant/points
+
+###
+GET http://localhost:8080/participant/points/10
+
+###
+GET http://localhost:8080/competition/points/1
+
+###
+
+GET http://localhost:8080/participant/search?min_age=18&max_age=30&competence_name=Floristics
