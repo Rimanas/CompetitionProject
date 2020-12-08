@@ -19,4 +19,9 @@ public class ParticipantCompetitionController {
         return managerPartComp.getAllDataFromTwoTable();
     }
 
+    @GetMapping("/max")
+    public List<ParticipantCompetition> getDataFromTwoTableMaxPoint(){
+        return managerPartComp.getDataFromTwoTableMaxPoint();
+    }
+
 }

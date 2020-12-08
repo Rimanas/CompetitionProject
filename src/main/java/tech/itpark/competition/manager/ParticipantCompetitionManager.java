@@ -32,4 +32,22 @@ public class ParticipantCompetitionManager {
                 );
     }
 
+    public List<ParticipantCompetition> getDataFromTwoTableMaxPoint() {
+        return template.query
+                (
+                        "SELECT p.id,\n" +
+                                "       p.name,\n" +
+                                "       p.surname,\n" +
+                                "       p.age,\n" +
+                                "       p.competence,\n" +
+                                "       p.competence_name,\n" +
+                                "       c.participant_id, c.points_one, c.points_two, c.points_three\n" +
+                                "FROM participants p\n" +
+                                "         JOIN competition c ON c.participant_id = p.id\n" +
+                                "ORDER BY (c.points_one + c.points_two + c.points_three) DESC\n" +
+                                "LIMIT 1;",
+                        rowMapperGeneral
+                );
+    }
+
 }

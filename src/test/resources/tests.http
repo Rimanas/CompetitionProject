@@ -7,6 +7,9 @@ GET http://localhost:8080/participant/part
 GET http://localhost:8080/points
 
 ###
+GET http://localhost:8080/points/max
+
+###
 GET http://localhost:8080/participant/11
 
 
