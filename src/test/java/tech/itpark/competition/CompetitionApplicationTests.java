@@ -11,6 +11,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.util.Collections;
 
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.content;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -20,9 +21,9 @@ class CompetitionApplicationTests {
     MockMvc mockMvc;
 
     @Test
-    void contextLoads() throws Exception {
+    void crudTests() throws Exception {
 
-        mockMvc.perform(MockMvcRequestBuilders.get("/participant"))
+        mockMvc.perform(get("/participants"))
                 .andExpect(MockMvcResultMatchers.content()
                         .json("[  {\n" +
                                 "    \"id\": 1,\n" +
@@ -158,7 +159,7 @@ class CompetitionApplicationTests {
                                 "  }]"));
 
         //getById
-        mockMvc.perform(MockMvcRequestBuilders.get("/participant/1"))
+        mockMvc.perform(get("/participants/1"))
                 .andExpect(MockMvcResultMatchers.content()
                         .json("{\n" +
                                 "  \"id\": 1,\n" +
@@ -172,6 +173,7 @@ class CompetitionApplicationTests {
                                 "  \"competenceName\": \"Jewelry skill\",\n" +
                                 "  \"urlImage\": \"https://mtdata.ru/u21/photo591B/20115901394-0/original.jpg\"\n" +
                                 "}"));
+
     }
 
 }
