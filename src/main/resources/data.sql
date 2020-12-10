@@ -1,4 +1,4 @@
-INSERT INTO participants (id, name, surname, country, city, age, gender, competence, competence_name, url_image) VALUES
+INSERT INTO participants (id, name, surname, country, city, age, gender, competence, competenceName, urlImage)VALUES
 (1, 'Lee', 'Jong Suk', 'South Korea', 'Seoul', '18', 'M', 'Creativity and Design', 'Jewelry skill', 'https://mtdata.ru/u21/photo591B/20115901394-0/original.jpg'),
 (2, 'Park', 'Seo Joon', 'South Korea', 'Pusan', '21', 'M', 'Creativity and Design', 'Visual merchandising', 'https://cdn.smartfacts.ru/367994/park-seo-jun_0.jpg'),
 (3, 'Park', 'Shin Hye', 'South Korea', 'Gwangju', '25', 'M', 'Creativity and Design', 'Graphic design', 'https://www.iloveasia.su/wp-content/uploads/2015/12/71483-3792591.jpg'),
@@ -11,7 +11,7 @@ INSERT INTO participants (id, name, surname, country, city, age, gender, compete
 (10, 'Sara', 'Lidge', 'Thailand', 'Surin', '27', 'F', 'Creativity and Design', 'Floristics', 'https://s1.imgs.cc/img/v4OhYWY.jpg'),
 (11, 'Lee', 'Jong Suk', 'South Korea', 'Seoul', '18', 'M', 'Creativity and Design', 'Floristics', 'https://asiapoisk.com/uploads/cache/people/jW6zwc-465x600.jpg');
 
-INSERT INTO competition (id, participant_id, points_one, points_two, points_three) VALUES
+INSERT INTO competition (id, participantId, pointsOne, pointsTwo, pointsThree) VALUES
 (1, '1', '25', '19', '26'),
 (2, '2', '19', '23', '23'),
 (3, '3', '22', '27', '21'),
@@ -22,4 +22,9 @@ INSERT INTO competition (id, participant_id, points_one, points_two, points_thre
 (9, '9', '26', '28', '15'),
 (10, '10', '29', '15', '20'),
 (11, '11', '23', '19', '23');
+
+INSERT INTO paid_competition (id, teamNumber, paymentPaid) VALUES
+(1, '1', '10000'),
+(2, '2', '135000'),
+(3, '3', '2313000');
 

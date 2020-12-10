@@ -10,10 +10,10 @@ public class CompetitionRowMapper implements RowMapper<Competition> {
     public Competition mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new Competition(
                 rs.getLong("id"),
-                rs.getLong("participant_id"),
-                rs.getInt("points_one"),
-                rs.getInt("points_two"),
-                rs.getInt("points_three")
+                rs.getLong("participantId"),
+                rs.getInt("pointsOne"),
+                rs.getInt("pointsTwo"),
+                rs.getInt("pointsThree")
         );
     }
 }

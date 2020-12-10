@@ -3,49 +3,45 @@ package tech.itpark.competition.manager;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
-import tech.itpark.competition.mapper.CompetitionRowMapper;
-import tech.itpark.competition.mapper.GeneralRowMapper;
+import tech.itpark.competition.mapper.ParticipantCompetitionRowMapper;
 import tech.itpark.competition.model.ParticipantCompetition;
 
-import java.util.Collections;
 import java.util.List;
 
 @Component
 @RequiredArgsConstructor
 public class ParticipantCompetitionManager {
-    private final NamedParameterJdbcTemplate template;
-    private final GeneralRowMapper rowMapperGeneral = new GeneralRowMapper();
+    private final NamedParameterJdbcTemplate jdbcTemplate;
+    private final ParticipantCompetitionRowMapper rowMapperGeneral = new ParticipantCompetitionRowMapper();
 
-    public List<ParticipantCompetition> getAllDataFromTwoTable() {
-        return template.query
+    public List<ParticipantCompetition> getPointsOfParticipantCompetition() {
+        return jdbcTemplate.query
                 (
                         "SELECT p.id,\n" +
                                 "       p.name,\n" +
                                 "       p.surname,\n" +
                                 "       p.age,\n" +
                                 "       p.competence,\n" +
-                                "       p.competence_name,\n" +
-                                "       c.participant_id, c.points_one, c.points_two, c.points_three\n" +
+                                "       p.competenceName,\n" +
+                                "       c.participantId, c.pointsOne, c.pointsTwo, c.pointsThree, (c.pointsOne + c.pointsTwo + c.pointsThree) as points\n" +
                                 "FROM participants p\n" +
-                                "         JOIN competition c ON c.participant_id = p.id;",
+                                "         JOIN competition c ON c.participantId = p.id;",
                         rowMapperGeneral
                 );
     }
 
-    public List<ParticipantCompetition> getDataFromTwoTableMaxPoint() {
-        return template.query
+    public List<ParticipantCompetition> getParticipantCompetitionMaxPoint() {
+        return jdbcTemplate.query
                 (
                         "SELECT p.id,\n" +
                                 "       p.name,\n" +
                                 "       p.surname,\n" +
                                 "       p.age,\n" +
                                 "       p.competence,\n" +
-                                "       p.competence_name,\n" +
-                                "       c.participant_id, c.points_one, c.points_two, c.points_three\n" +
+                                "       p.competenceName,\n" +
+                                "       c.participantId, c.pointsOne, c.pointsTwo, c.pointsThree, (c.pointsOne + c.pointsTwo + c.pointsThree) as points\n" +
                                 "FROM participants p\n" +
-                                "         JOIN competition c ON c.participant_id = p.id\n" +
-                                "ORDER BY (c.points_one + c.points_two + c.points_three) DESC\n" +
-                                "LIMIT 1;",
+                                "         JOIN competition c ON c.participantId = p.id ORDER BY points DESC LIMIT 5",
                         rowMapperGeneral
                 );
     }

@@ -17,16 +17,23 @@ public class CompetitionManager {
 
     public List<Competition> getAllComp() {
         return template.query(
-                "SELECT id, participant_id, points_one, points_two, points_three FROM competition ORDER BY id LIMIT 50",
+                "SELECT id, participantId, pointsOne, pointsTwo, pointsThree FROM competition ORDER BY id LIMIT 50",
                 rowMapper
         );
     }
 
 
-    public List<Competition> getPointsById(long participant_id) {
+    public List<Competition> getPointsById(long participantId) {
         return template.query(
-                "SELECT id, participant_id, points_one, points_two, points_three FROM competition WHERE participant_id = :participant_id",
-                new MapSqlParameterSource("participant_id", participant_id),
+                "SELECT id, participantId, pointsOne, pointsTwo, pointsThree FROM competition WHERE participantId = :participantId",
+                new MapSqlParameterSource("participantId", participantId),
+                rowMapper
+        );
+    }
+
+    public List<Competition> getMaxPointsOne() {
+        return template.query(
+                "SELECT id, participantId, pointsOne as po, pointsTwo, pointsThree FROM competition WHERE pointsOne = (SELECT MAX(pointsOne) FROM competition) ",
                 rowMapper
         );
     }

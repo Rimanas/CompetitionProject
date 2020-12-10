@@ -17,8 +17,8 @@ public class ParticipantRowMapper implements RowMapper<Participant> {
                 rs.getInt("age"),
                 rs.getString("gender"),
                 rs.getString("competence"),
-                rs.getString("competence_name"),
-                rs.getString("url_image")
+                rs.getString("competenceName"),
+                rs.getString("urlImage")
         );
     }
 }

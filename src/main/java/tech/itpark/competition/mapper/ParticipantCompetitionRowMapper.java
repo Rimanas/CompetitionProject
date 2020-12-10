@@ -9,7 +9,7 @@ import tech.itpark.competition.model.ParticipantCompetition;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class GeneralRowMapper implements RowMapper<ParticipantCompetition> {
+public class ParticipantCompetitionRowMapper implements RowMapper<ParticipantCompetition> {
 
     public ParticipantCompetition mapRow(ResultSet rs, int rowNum) throws SQLException {
         return new ParticipantCompetition(
@@ -18,11 +18,12 @@ public class GeneralRowMapper implements RowMapper<ParticipantCompetition> {
                 rs.getString("surname"),
                 rs.getInt("age"),
                 rs.getString("competence"),
-                rs.getString("competence_name"),
-                rs.getLong("participant_id"),
-                rs.getInt("points_one"),
-                rs.getInt("points_two"),
-                rs.getInt("points_three")
+                rs.getString("competenceName"),
+                rs.getLong("participantId"),
+                rs.getInt("pointsOne"),
+                rs.getInt("pointsTwo"),
+                rs.getInt("pointsThree"),
+                rs.getInt("points")
         );
     }
 }

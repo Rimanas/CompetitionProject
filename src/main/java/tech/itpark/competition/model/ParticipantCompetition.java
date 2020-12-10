@@ -9,9 +9,10 @@ public class ParticipantCompetition {
     String surname;
     int age;
     String competence;
-    String competence_name;
-    long participant_id;
-    int points_one;
-    int points_two;
-    int points_three;
+    String competenceName;
+    long participantId;
+    int pointsOne;
+    int pointsTwo;
+    int pointsThree;
+    int points;
 }

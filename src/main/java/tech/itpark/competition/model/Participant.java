@@ -12,6 +12,6 @@ public class Participant {
     int age;
     String gender;
     String competence;
-    String competence_name;
-    String url_image;
+    String competenceName;
+    String urlImage;
 }

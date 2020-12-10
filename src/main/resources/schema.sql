@@ -8,15 +8,22 @@ CREATE TABLE participants    -- первое создание и выполне�
     age INTEGER NOT NULL CHECK (age > 17),
     gender TEXT NOT NULL,
     competence TEXT NOT NULL,
-    competence_name TEXT NOT NULL,
-    url_image TEXT
+    competenceName TEXT NOT NULL,
+    urlImage TEXT
 );
 
 CREATE TABLE competition
 (
-    id INTEGER PRIMARY KEY AUTO_INCREMENT ,
-    participant_id INTEGER REFERENCES participants,
-    points_one INTEGER,
-    points_two INTEGER,
-    points_three INTEGER
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    participantId INTEGER REFERENCES participants,
+    pointsOne INTEGER,
+    pointsTwo INTEGER,
+    pointsThree INTEGER
+);
+
+CREATE TABLE paid_competition
+(
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    teamNumber INTEGER NOT NULL,
+    paymentPaid INTEGER NOT NULL
 );

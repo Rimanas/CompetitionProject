@@ -10,14 +10,14 @@ import tech.itpark.competition.model.Competition;
 
 import java.util.List;
 
-@RestController // чтобы возвращал джейсон
-@RequestMapping("/competition")   // что реагировать будет на пути типа participant
+@RestController
+@RequestMapping("/competition")
 @RequiredArgsConstructor
 public class CompetitionController {
     private final CompetitionManager manager;
 
-    @GetMapping("/points/{participant_id}")
-    public List<Competition> getPointsById(@PathVariable long participant_id) {
-        return manager.getPointsById(participant_id);
+    @GetMapping("/points/{participantId}")
+    public List<Competition> getPointsById(@PathVariable long participantId) {
+        return manager.getPointsById(participantId);
     }
 }

@@ -22,14 +22,14 @@ public class ParticipantManager { //TODO: сама - самостоятельн�
 
     public List<Participant> getAll(){
         return template.query(
-                "SELECT id, name, surname, country, city, age, gender, competence, competence_name, url_image FROM participants ORDER BY id LIMIT 50",
+                "SELECT id, name, surname, country, city, age, gender, competence, competenceName, urlImage FROM participants ORDER BY id LIMIT 50",
                 rowMapper
         );
     }
 
     public Participant getById(long id){
         return template.queryForObject(
-                "SELECT id, name, surname, country, city, age, gender, competence, competence_name, url_image FROM participants WHERE id = :id",
+                "SELECT id, name, surname, country, city, age, gender, competence, competenceName, urlImage FROM participants WHERE id = :id",
                 new MapSqlParameterSource("id", id),
                 rowMapper
         );
@@ -39,7 +39,8 @@ public class ParticipantManager { //TODO: сама - самостоятельн�
         if (item.getId() == 0) {
             KeyHolder keyHolder = new GeneratedKeyHolder();
             template.update(
-                    "INSERT INTO participants(name, surname, country, city, age, gender, competence, competence_name, url_image) VALUES (:name, :surname, :country, :city, :age, :gender, :competence, :competence_name, :url_image)",
+                    "INSERT INTO participants(name, surname, country, city, age, gender, competence, competenceName, urlImage) " +
+                            "VALUES (:name, :surname, :country, :city, :age, :gender, :competence, :competenceName, :urlImage)",
                     new BeanPropertySqlParameterSource(item),
                     keyHolder
             );
@@ -48,21 +49,31 @@ public class ParticipantManager { //TODO: сама - самостоятельн�
         }
 
             template.update(
-                    "UPDATE participants SET name = :name, surname = :surname, country = :country, city = :city, age = :age, gender = :gender, competence = :competence, competence_name = :competence_name, url_image = :url_image WHERE id = :id",
+                    "UPDATE participants " +
+                            "SET name = :name, " +
+                            "surname = :surname, " +
+                            "country = :country, city = :city, " +
+                            "age = :age, gender = :gender, " +
+                            "competence = :competence, " +
+                            "competenceName = :competenceName, " +
+                            "urlImage = :urlImage " +
+                            "WHERE id = :id",
                     new BeanPropertySqlParameterSource(item)
             );
         return item;
 
     }
 
-    public List<Participant> search(int min_age, int max_age, String competence_name) {
+    public List<Participant> search(int minAge, int maxAge, String competenceName) {
 //        HashMap<String, Integer> param = new HashMap<>();
         MapSqlParameterSource param= new MapSqlParameterSource();
-        param.addValue("min_age", min_age);
-        param.addValue("max_age", max_age);
-        param.addValue("competence_name", competence_name);
+        param.addValue("minAge", minAge);
+        param.addValue("maxAge", maxAge);
+        param.addValue("competenceName", competenceName);
         return template.query(
-                "SELECT id, name, surname, country, city, age, gender, competence, competence_name, url_image FROM participants WHERE (age BETWEEN :min_age AND :max_age) AND (competence_name = :competence_name) ORDER BY age ASC",
+                "SELECT id, name, surname, country, city, age, gender, competence, competenceName, urlImage" +
+                        " FROM participants" +
+                        " WHERE (age BETWEEN :minAge AND :maxAge) AND (competenceName = :competenceName) ORDER BY age ASC",
                 param,
                 rowMapper);
     }

@@ -1,7 +1,10 @@
-GET http://localhost:8080/participant
+GET https://competition-project.herokuapp.com/participants
 
 ###
-GET http://localhost:8080/participant/part
+GET http://localhost:8080/participants
+
+###
+GET http://localhost:8080/participants/part
 
 ###
 GET http://localhost:8080/points
@@ -10,12 +13,12 @@ GET http://localhost:8080/points
 GET http://localhost:8080/points/max
 
 ###
-GET http://localhost:8080/participant/11
+GET http://localhost:8080/participants/1
 
 
 ###
 
-POST http://localhost:8080/participant
+POST http://localhost:8080/participants
 Content-Type: application/json
 
 {
@@ -27,27 +30,38 @@ Content-Type: application/json
   "age": 27,
   "gender": "F",
   "competence": "Creativity and Design",
-  "competence_name": "Floristics",
-  "url_image": "https://asiapoisk.com/uploads/cache/people/jW6zwc-465x600.jpg"
+  "competenceName": "Floristics",
+  "urlImage": "https://asiapoisk.com/uploads/cache/people/jW6zwc-465x600.jpg"
 }
 
 
 ###
 // это будет по другому
-http://localhost:8080/participant/11/remove
+http://localhost:8080/participants/11/remove
 
 ###
-DELETE http://localhost:8080/participant/12
+DELETE http://localhost:8080/participants/12
 
 ###
-GET http://localhost:8080/participant/points
+GET http://localhost:8080/participants/points
 
 ###
-GET http://localhost:8080/participant/points/10
+GET http://localhost:8080/participants/points/maxPointsOne
+
+###
+GET http://localhost:8080/participants/points/10
 
 ###
 GET http://localhost:8080/competition/points/1
 
 ###
 
-GET http://localhost:8080/participant/search?min_age=18&max_age=30&competence_name=Floristics
+GET http://localhost:8080/participants/search?minAge=18&maxAge=30&competenceName=Floristics
+
+###
+GET http://localhost:8080/teams/1
+
+###
+GET http://localhost:8080/teams/1/paymentForOnePerson?participantsNumber=5
+
+

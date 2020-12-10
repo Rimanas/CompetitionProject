@@ -9,19 +9,19 @@ import tech.itpark.competition.model.ParticipantCompetition;
 
 import java.util.List;
 
-@RestController // чтобы возвращал джейсон
-@RequestMapping("/points")   // что реагировать будет на пути типа participant
+@RestController
+@RequestMapping("/points")
 @RequiredArgsConstructor
 public class ParticipantCompetitionController {
     private final ParticipantCompetitionManager managerPartComp;
     @GetMapping
-    public List<ParticipantCompetition> getAllDataFromTwoTable(){
-        return managerPartComp.getAllDataFromTwoTable();
+    public List<ParticipantCompetition> getPointsOfParticipantCompetition(){
+        return managerPartComp.getPointsOfParticipantCompetition();
     }
 
     @GetMapping("/max")
-    public List<ParticipantCompetition> getDataFromTwoTableMaxPoint(){
-        return managerPartComp.getDataFromTwoTableMaxPoint();
+    public List<ParticipantCompetition> getParticipantCompetitionMaxPoint(){
+        return managerPartComp.getParticipantCompetitionMaxPoint();
     }
 
 }

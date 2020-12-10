@@ -8,15 +8,16 @@ public class MainTestManualV1 {
         calculatePaymentForFourParticipant();
         calculatePaymentForOneParticipant();
     }
-    public static void calculatePaymentForFourParticipant(){
+
+    public static void calculatePaymentForFourParticipant() {
         final var service = new PaymentService();
-        final var actual = service.calculate(5,6200,600,900,600,4);
+        final var actual = service.calculatePaymentForParticipant(10000, 10);
         System.out.println(actual);
     }
 
-    public static void calculatePaymentForOneParticipant(){
+    public static void calculatePaymentForOneParticipant() {
         final var service = new PaymentService();
-        final var actual = service.calculate(5,6200,600,900,600,1);
+        final var actual = service.calculatePaymentForParticipant(10000, 1);
         System.out.println(actual);
     }
 }
