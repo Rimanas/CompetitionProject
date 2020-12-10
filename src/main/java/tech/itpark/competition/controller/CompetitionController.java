@@ -16,8 +16,20 @@ import java.util.List;
 public class CompetitionController {
     private final CompetitionManager manager;
 
+
+    @GetMapping("/points")
+    public List<Competition> getAllComp() {
+        return manager.getAllComp();
+    }
+
     @GetMapping("/points/{participantId}")
     public List<Competition> getPointsById(@PathVariable long participantId) {
         return manager.getPointsById(participantId);
     }
+
+    @GetMapping("/points/maxPointsOne")
+    public List<Competition> getMaxPointsOne() {
+        return manager.getMaxPointsOne();
+    }
+
 }

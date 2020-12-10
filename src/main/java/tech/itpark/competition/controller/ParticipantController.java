@@ -17,7 +17,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ParticipantController {
     private final ParticipantManager manager;
-    private final CompetitionManager managerComp;
     private final ParticipantCompetitionManager managerPartComp;
 
     @GetMapping
@@ -48,19 +47,15 @@ public class ParticipantController {
         return manager.removeById(id);
     }
 
+
     @GetMapping("/points")
-    public List<Competition> getAllComp() {
-        return managerComp.getAllComp();
+    public List<ParticipantCompetition> getPointsOfParticipantCompetition(){
+        return managerPartComp.getPointsOfParticipantCompetition();
     }
 
-    @GetMapping("/points/maxPointsOne")
-    public List<Competition> getMaxPointsOne() {
-        return managerComp.getMaxPointsOne();
-    }
-
-    @RequestMapping("/points/{participantId}")
-    public List<Competition> getPointsById(@PathVariable long participantId) {
-        return managerComp.getPointsById(participantId);
+    @GetMapping("/points/max")
+    public List<ParticipantCompetition> getParticipantCompetitionMaxPoint(){
+        return managerPartComp.getParticipantCompetitionMaxPoint();
     }
 
 }

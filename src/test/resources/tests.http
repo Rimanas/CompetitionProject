@@ -1,6 +1,61 @@
 GET https://competition-project.herokuapp.com/participants
 
 ###
+GET https://competition-project.herokuapp.com/participants/1
+
+###
+POST https://competition-project.herokuapp.com/participants
+Content-Type: application/json
+
+{
+  "id": 0,
+  "name": "AmpaipornAA",
+  "surname": "Jitmaingong",
+  "country": "Thailand",
+  "city": "Surin",
+  "age": 27,
+  "gender": "F",
+  "competence": "Creativity and Design",
+  "competenceName": "Floristics",
+  "urlImage": "https://asiapoisk.com/uploads/cache/people/jW6zwc-465x600.jpg"
+}
+
+###
+POST https://competition-project.herokuapp.com/participants
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "AmpaipornAA",
+  "surname": "Jitmaingong",
+  "country": "Thailand",
+  "city": "Surin",
+  "age": 25,
+  "gender": "F",
+  "competence": "Creativity and Design",
+  "competenceName": "Floristics",
+  "urlImage": "https://asiapoisk.com/uploads/cache/people/jW6zwc-465x600.jpg"
+}
+
+###
+DELETE https://competition-project.herokuapp.com/participants/12
+
+###
+GET https://competition-project.herokuapp.com/participants/search?minAge=18&maxAge=30&competenceName=Floristics
+
+
+
+###
+GET https://competition-project.herokuapp.com/participants/competition/points
+###
+GET https://competition-project.herokuapp.com/participants/competition/points/10
+###
+GET https://competition-project.herokuapp.com/participants/competition/points/maxPointsOne
+
+
+
+
+###
 GET http://localhost:8080/participants
 
 ###
