@@ -14,12 +14,12 @@ public class PaidCompetitionController {
     private final PaidCompetitionManager manager;
 
     @GetMapping("/{teamNumber}")
-    public PaidCompetition getByRoom(@PathVariable int teamNumber) {
+    public PaidCompetition getByTeam(@PathVariable int teamNumber) {
         return manager.getByTeam(teamNumber);
     }
 
     @GetMapping("/{teamNumber}/paymentForOnePerson")
-    public List<Integer> getByRoom(@PathVariable int teamNumber, @RequestParam int participantsNumber) {
+    public List<Integer> getPaymentForParticipant(@PathVariable int teamNumber, @RequestParam int participantsNumber) {
         return manager.calculatePaymentForParticipant(teamNumber, participantsNumber);
     }
 
